@@ -1,12 +1,11 @@
 buildscript {
     repositories {
         jcenter()
-        mavenCentral()
         mavenLocal()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.2.3'
+        classpath 'com.android.tools.build:gradle:1.+'
     }
 }
 
@@ -19,4 +18,10 @@ allprojects {
         mavenCentral()
         mavenLocal()
     }
+
+//    publishing {
+//        repositories {
+//            mavenLocal()
+//        }
+//    }
 }

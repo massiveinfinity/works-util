@@ -2,11 +2,11 @@ apply plugin: 'com.android.library'
 apply plugin: 'signing'
 
 group 'com.mobilesolutionworks'
-version '1.0.4'
+version '1.0.5'
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1.2"
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
 
     def androidTargetSdkVersion = compileSdkVersion
 
@@ -19,8 +19,8 @@ android {
     defaultConfig {
         minSdkVersion 1
         targetSdkVersion androidTargetSdkVersion
-        versionCode 4
-        versionName "1.0.4"
+        versionCode 5
+        versionName "1.0.5"
     }
 
     buildTypes {
@@ -83,7 +83,8 @@ signing {
 }
 
 uploadArchives {
-    if (project.hasProperty('sonatypeUsername')) {
+    if (project.hasProperty('sonatypeUsername'))
+    {
         repositories {
             mavenDeployer {
                 beforeDeployment {
@@ -99,6 +100,12 @@ uploadArchives {
                     authentication(userName: sonatypeUsername, password: sonatypePassword)
                 }
             }
+        }
+    }
+    else
+    {
+        repositories {
+            mavenLocal()
         }
     }
 }
@@ -141,6 +148,5 @@ task javadocJar(type: Jar, dependsOn: "javadocRelease") {
 
 artifacts {
     archives sourcesJar
-    archives javadocJar
     archives jar
 }
