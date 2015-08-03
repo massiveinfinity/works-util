@@ -104,8 +104,18 @@ uploadArchives {
     }
     else
     {
+        def repo = System.getProperty('maven.repo.local')
+        if (!repo) {
+            repo = System.getProperty('HOME') + '/.m2/repository'
+        }
+
         repositories {
-            mavenLocal()
+            mavenDeployer {
+                pom = generatePom()
+                repository(url:new File(repo)) {
+
+                }
+            }
         }
     }
 }
