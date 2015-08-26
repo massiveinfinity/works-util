@@ -10,8 +10,6 @@ buildscript {
 }
 
 allprojects {
-    apply plugin: 'maven'
-    apply plugin: 'maven-publish'
 
     repositories {
         jcenter()
